@@ -13,7 +13,7 @@ RED		= \033[31;1m
 #---------- BASE ----------#
 
 # FILES 
-CPP_FILES = main.cpp \
+CPP_FILES = main.cpp zombieHorde.cpp\
 
 CLASS_CPP_FILES = Zombie.cpp \
 #SRC_FILES = $(shell find $(SRC_DIR) -name '*.cpp')
