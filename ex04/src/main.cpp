@@ -29,11 +29,11 @@ void	readAndWrite(std::string file, std::string string1, std::string string2)
 	if (!outFile.is_open())
 		std::cerr << "error: could not open outfile" << std::endl, exit(1);
 
-		while (std::getline(inFile, readLine))
-		{
-			filterString(string1, string2, &readLine, 0);
-			outFile << readLine << std::endl;
-		}
+	while (std::getline(inFile, readLine))
+	{
+		filterString(string1, string2, &readLine, 0);
+		outFile << readLine << std::endl;
+	}
 }
 
 int	main(int argc, char **argv)
