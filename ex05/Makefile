@@ -15,7 +15,7 @@ RED		= \033[31;1m
 # FILES 
 CPP_FILES = main.cpp \
 
-CLASS_CPP_FILES =  \
+CLASS_CPP_FILES =  Harl.cpp\
 #SRC_FILES = $(shell find $(SRC_DIR) -name '*.cpp')
 
 # DIRECTORIES 
