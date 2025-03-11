@@ -1,7 +1,6 @@
-#include <fstream>
-#include <iostream>
+#include "../include/main.hpp"
 
-std::string	strJoing(std::string s1, std::string s2)
+std::string	strJoin(std::string s1, std::string s2)
 {
 	return (s1 + s2);
 }
@@ -16,9 +15,25 @@ void	filterString(std::string search, std::string replace, std::string *readLine
 	newString += readLine->substr(0, pos);
 	newString += replace;
 	newString += readLine->substr(pos + search.length());
-	std::cout << newString << std::endl;
 	*readLine = newString;
 	filterString(search, replace, readLine, pos + replace.length());
+}
+
+void	readAndWrite(std::string file, std::string string1, std::string string2)
+{
+	std::string		readLine;
+	std::ifstream	inFile(file.c_str());
+	if (!inFile.is_open())
+		std::cerr << "error: could not open infile" << std::endl, exit(1);
+	std::ofstream	outFile(strJoin(file.c_str(), ".replace"));
+	if (!outFile.is_open())
+		std::cerr << "error: could not open outfile" << std::endl, exit(1);
+
+		while (std::getline(inFile, readLine))
+		{
+			filterString(string1, string2, &readLine, 0);
+			outFile << readLine << std::endl;
+		}
 }
 
 int	main(int argc, char **argv)
@@ -26,7 +41,6 @@ int	main(int argc, char **argv)
 	std::string	file;
 	std::string	string1;
 	std::string	string2;
-	std::string	readLine;
 
 	if (argc != 4)
 		return (1);
@@ -34,17 +48,8 @@ int	main(int argc, char **argv)
 	string1 = argv[2];
 	string2 = argv[3];
 	if (file.empty() || string1.empty() || string2.empty())
-		return (1);
-	std::ifstream	inFile(file.c_str());
-	std::ofstream	outFile(strJoing(file.c_str(), ".replace"));
-	if (inFile.is_open())
-	{
-		while (std::getline(inFile, readLine))
-		{
-			filterString(string1, string2, &readLine, 0);
-			outFile << readLine << std::endl;
-		}
-	}
+		return (std::cout << "error: missing or empty argument" << std::endl, 1);
+	readAndWrite(file, string1, string2);
 	return (0);
 }
 
