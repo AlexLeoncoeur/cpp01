@@ -7,7 +7,7 @@ Weapon::Weapon()
 Weapon::Weapon(std::string type)
 {
 	this->type = type;
-	this->noWeapon = " fists";
+	this->noWeapon = "*unknown weapon*";
 }
 
 Weapon::~Weapon()
