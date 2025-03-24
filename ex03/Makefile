@@ -42,7 +42,7 @@ $(CLASS_OBJ_DIR)%.o: $(CLASS_DIR)%.cpp
 #---------- FLAGS & COMPILATION ----------#
 
 CC = c++
-NAME = ex03
+NAME = violence
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
 all: $(NAME)
